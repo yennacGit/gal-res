@@ -1,0 +1,15 @@
+Galère n°2 :
+
+cela concerne la mise en cache des informations d'identification, ce qui signifie que Git fournira par défaut les informations d'identification (compte GitHub et mot de passe) de l'ancien compte pendant que vous essayez de transférer le nouveau compte.
+$ git push -u origin master
+remote: Permission to yennacGit/trouble.git denied to yennacdevops.
+fatal: unable to access 'https://github.com/yennacGit/trouble.git/': The requested URL returned error: 403
+
+Solution:
+
+$ git config credential.helper
+manager
+
+Le problème dans mon cas vient du cache manager où j'avais enregistré dans l'identification génériques ( Ca aurai pu entre ssh key enregistré dans putty : GIT_SSH=c:\Program Files\Putty\plink.exe:)
+Donc aller à cet endroit et modifier :
+Panneau de configuration\Comptes d’utilisateurs\Gestionnaire d'identification\Modifier des informations d’identification génériques
