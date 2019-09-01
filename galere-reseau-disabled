@@ -1,0 +1,7 @@
+Galère n°3 :
+
+réseau inaccessible 
+
+solution:activation de la carte réseau qui était desactivé 
+
+#ifup ens33
