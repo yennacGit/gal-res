@@ -1,0 +1,68 @@
+[root@localhost ~]# vi /etc/sysconfig/network-scripts/ifcfg-ens33
+
+HWADDR=00:0c:29:fd:b0:ef
+TYPE=Ethernet
+# Static IP Address #
+BOOTPROTO=none
+# Server IP #
+IPADDR=192.168.46.30
+# Netmask #
+NETMASK=255.255.255.0
+# Default Gateway IP #
+GATEWAY=192.168.46.2
+# DNS Servers #
+DNS1=192.168.46.2
+DNS2=8.8.8.8
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+# Disable ipv6 #
+IPV6INIT=no
+# Device Name #
+NAME=ens33
+DEVICE=ens33
+# Optional – This is system specific and can be created using ‘uuidgen ens33’ command #
+UUID=7bd628f9-971a-4ab0-9678-f774afa2d807
+ONBOOT=yes
+# Default Domain Search #
+DOMAIN=younes.local
+**************************************************************************************************
+
+
+[root@localhost ~]# service network restart
+Restarting network (via systemctl):                        [  OK  ]
+[root@localhost ~]#
+         
+************************************************************************************************[root@localhost ~]# systemctl status network
+● network.service - LSB: Bring up/down networking
+   Loaded: loaded (/etc/rc.d/init.d/network; bad; vendor preset: disabled)
+   Active: active (running) since mer. 2019-09-04 14:54:17 CEST; 1min 19s ago
+     Docs: man:systemd-sysv-generator(8)
+  Process: 3853 ExecStop=/etc/rc.d/init.d/network stop (code=exited, status=0/SUCCESS)
+  Process: 4047 ExecStart=/etc/rc.d/init.d/network start (code=exited, status=0/SUCCESS)
+   CGroup: /system.slice/network.service
+           └─4244 /sbin/dhclient -1 -q -lf /var/lib/dhclient/dhclient-a257271c-799d-3c2d-9451-496aaaf98ef1-ens33.lease -pf /var/run/dhclient-ens33.pid ens33
+
+sept. 04 14:54:09 localhost.localdomain systemd[1]: Starting LSB: Bring up/down networking...
+sept. 04 14:54:09 localhost.localdomain network[4047]: Activation de l'interface loopback :  [  OK  ]
+sept. 04 14:54:10 localhost.localdomain network[4047]: Activation de l'interface Connexion_filaire_1 :
+sept. 04 14:54:10 localhost.localdomain dhclient[4187]: DHCPREQUEST on ens33 to 255.255.255.255 port 67 (xid=0x180a75df)
+sept. 04 14:54:10 localhost.localdomain dhclient[4187]: DHCPACK from 192.168.46.254 (xid=0x180a75df)
+sept. 04 14:54:12 localhost.localdomain network[4047]: Définition des informations IP pour ens33. fait.
+sept. 04 14:54:12 localhost.localdomain network[4047]: [  OK  ]
+sept. 04 14:54:16 localhost.localdomain network[4047]: Activation de l'interface ens33 :  RTNETLINK answers: File exists
+sept. 04 14:54:17 localhost.localdomain network[4047]: [  OK  ]
+sept. 04 14:54:17 localhost.localdomain systemd[1]: Started LSB: Bring up/down networking.
+[root@localhost ~]#
+                                                                          		 
+
+
+**************************************************************************************************
+check si la gateway est ok:
+
+route -n
+Table de routage IP du noyau
+Destination     Passerelle      Genmask         Indic Metric Ref    Use Iface
+0.0.0.0         192.168.46.2    0.0.0.0         UG    0      0        0 ens33
+169.254.0.0     0.0.0.0         255.255.0.0     U     1002   0        0 ens33
+192.168.46.0    0.0.0.0         255.255.255.0   U     0      0        0 ens33
+**************************************************************************************************
