@@ -1,0 +1,14 @@
+vi /etc/netplan/50-cloud-init.yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens33:
+     dhcp4: no
+     addresses: [192.168.46.10/24]
+     gateway4: 192.168.46.2
+     #la gateway est celle du nat de wmware vmnet8
+     nameservers:
+       addresses: [8.8.8.8,8.8.4.4]
+#sudo netplan apply , pour qu'il soit prise en compte
+
