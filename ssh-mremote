@@ -1,0 +1,13 @@
+
+soit par git ou zoc ou mremote ou peut importe quel ssh-client
+de mon pc windows @Ip 192.168.0.13 qui n'est pas sur le même réseau que ma VM ubuntu sur vmware je lance la commande :
+$ ssh younes@192.168.46.100
+et j'ai l'erreur suivante :
+ssh: connect to host 192.168.46.100 port 22: Connection timed out
+
+la solution :
+authoriser le port ssh 22 dans le pare feu ufw
+
+$ sudo ufw allow ssh
+puis vérifier:
+sudo ufw status 
