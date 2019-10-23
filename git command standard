@@ -1,0 +1,4 @@
+git status
+git add "/d/projets2019/galéres/git command standard"
+git commit -m "galere git commentaire"
+git push -u origin master
