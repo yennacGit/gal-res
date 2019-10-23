@@ -1,0 +1,14 @@
+
+[root@production ~]# hostnamectl status
+   Static hostname: production
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: 0d9f1b23313246a591d4801a7add6e65
+           Boot ID: 9386ed9b217a4f3e9754f31fa99bc87b
+    Virtualization: vmware
+  Operating System: CentOS Linux 7 (Core)
+       CPE OS Name: cpe:/o:centos:centos:7
+            Kernel: Linux 3.10.0-693.el7.x86_64
+      Architecture: x86-64
+[root@production ~]#  hostnamectl set-hostname production
+
