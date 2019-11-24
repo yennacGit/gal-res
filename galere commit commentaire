@@ -1,3 +1,5 @@
+
+git log --pretty=oneline --abbrev-commit  ==> list les dernières commit
 git rebase -i HEAD~1 # Displays a list of the last  commits on the current branch
 changer pick to reword
 save : wq!
