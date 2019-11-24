@@ -3,4 +3,4 @@ younes@ansible:~$ sudo vi /etc/cloud/cloud.cfg
 changer à true:
 preserve_hostname: true
 hostnamectl set-hostname ansible
-sudo reboot
+hostnamectl set-hostname
