@@ -1,8 +1,14 @@
 
 git log --pretty=oneline --abbrev-commit  ==> list les dernières commit
-git rebase -i HEAD~1 # Displays a list of the last  commits on the current branch
+git rebase -i HEAD~1 # Displays a list of the last  commits on the current branch || si first commit :
+cette commande ne marchera pas et genère cette erreur :
+	fatal: Needed a single revision
+	invalid upstream –i
+	solution :  git rebase -i --root
 changer pick to reword
 save : wq!
 change commentaire
 save :wq!
 git push --force
+fatal: Needed a single revision
+invalid upstream –i
