@@ -1,0 +1,20 @@
+Question
+
+Comment réinitialiser un mot de passe pour l'utilisateur sa d'une instance Microsoft SQL Server?
+
+Réponse:
+
+1.Démarrez une invite de commande en tant qu'administrateur et répertoriez toutes les instances de Microsoft SQL Server:
+
+OSQL -L
+
+2.Dans la commande ci-dessous, spécifiez une instance de Microsoft SQL Server pour laquelle vous souhaitez réinitialiser un mot de passe et remplacez ***** par votre nouveau mot de passe. 
+
+osql -S "nom_d'instance" -E -Q "exec sp_password NULL,'*****','sa'"
+
+
+How To: Create a SQL Server Authenticated user in SQL Server 2005?
+https://support.esri.com/en/technical-article/000009958
+
+How To Add A Service Account To Microsoft SQL Server ?
+https://support.accessdata.com/hc/en-us/articles/203631845-How-to-add-a-service-account-to-Microsoft-SQL-Server
