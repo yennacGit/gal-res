@@ -1,0 +1,22 @@
+PB:
+1.
+unknown encoding name - CP720 (ArgumentError)
+2.
+`encode': "\xAE" from ASCII-8BIT to UTF-8 (Encoding::UndefinedConversionError)
+
+solution:
+	1.
+	ouvrir le fichier :.../HashiCorp/embedded/mingw64/lib/ruby/2.4.0/win32/registry.rb
+
+	avec notpad++ en tant qu'admin, et changer 
+	  #LOCALE = Encoding.find(Encoding.locale_charmap) 
+	  en :
+	  LOCALE = Encoding::UTF_8
+	  
+	2.
+	aussi modifier une autre line qui est dans le fichier io.rb dans :D:\vagrant\HashiCorp\embedded\gems\2.2.6\gems\vagrant-2.2.6\lib\vagrant\util
+
+		#data << io.readpartial(READ_CHUNK_SIZE).encode("UTF-8", Encoding.default_external)
+		par 
+		data << io.readpartial(READ_CHUNK_SIZE).encode("UTF-8", invalid: :replace, undef: :replace, replace:'?')  
+	  
